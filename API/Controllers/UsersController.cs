@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
+
+//hi
 {
     [ApiController]
     [Route("api/[controller]")] // GET /api/users
