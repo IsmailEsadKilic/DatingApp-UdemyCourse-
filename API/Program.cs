@@ -25,3 +25,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+// reformatting in VS Code keyboard shortcut: Shift + Alt + F

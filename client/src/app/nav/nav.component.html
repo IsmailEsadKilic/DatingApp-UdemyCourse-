@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Dating App (just bcz that was the course subject)</a>
+        <ul class="navbar-nav me-auto mb-2 mb-md-0" *ngIf="loggedIn">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Matches</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Lists</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled">Messages</a>
+            </li>
+            <li class="nav-item" (click)="Logout()">
+                <a class="nav-link disabled">Logout</a>
+            </li>
+        </ul>
+
+        <div class="dropdown" *ngIf="loggedIn" dropdown>
+            <a class="dropdown-toggle text-ligth"dropdownToggle>Welcome User</a>
+            <div class="dropdown-menu" *dropdownMenu>
+                <a class="dropdown-item">Edit profile</a>
+                <a class="dropdown-item" (click)="Logout()">Logout</a>
+
+            </div>
+        </div>
+
+        <form *ngIf="!loggedIn" #LoginForm= "ngForm" class="d-flex" (ngSubmit)="Login()" autocomplete="off">
+            <input
+            name="username"
+            [(ngModel)]="model.username"
+            class="form-control me-2"
+            type="text"
+            placeholder="Username">
+            <input
+            name="password"
+            [(ngModel)]="model.password"
+            class="form-control me-2"
+            type="password"
+            placeholder="Password">
+            <button class="btn btn-outline-success" type="submit">Login</button>
+        </form>
+    </div>
+</nav>
