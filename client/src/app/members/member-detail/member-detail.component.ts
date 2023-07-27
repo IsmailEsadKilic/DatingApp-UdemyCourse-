@@ -18,8 +18,6 @@ export class MemberDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadMember();
-    console.log("gallery images3");
-    console.log(this.galleryImages);
     this.galleryOptions = [
       {
         width: '500px',
@@ -36,15 +34,12 @@ export class MemberDetailComponent implements OnInit {
     if (!this.member) return [];
     const imageUrls = [];
     for (const photo of this.member.photos) {
-      console.log("trying to get image");
-      console.log(photo?.url);
       imageUrls.push({
         small: photo.url,
         medium: photo.url,
         big: photo.url
       })
     }
-    console.log(imageUrls);
     return imageUrls;
   }
 
@@ -57,8 +52,6 @@ export class MemberDetailComponent implements OnInit {
       next: member => {
         this.member = member;
         this.galleryImages = this.getImages();
-        console.log("gallery images");
-        console.log(this.galleryImages);
       },
     })
   }
