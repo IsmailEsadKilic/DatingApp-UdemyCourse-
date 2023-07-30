@@ -2,3 +2,9 @@
     cursor: pointer;
     color: #afafaf;
 }
+
+img {
+    max-height: 50px;
+    border: 2px solid white;
+    display : inline;
+}

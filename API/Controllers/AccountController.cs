@@ -47,9 +47,12 @@ namespace API.Controllers
         [HttpPost("login")] // POST: api/account/login
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
-            var user = await _context.Users.SingleOrDefaultAsync(AppUser =>
-            AppUser.Username == loginDto.Username);
             
+            //get user from db
+            var user = await _context.Users
+                .Include(p => p.Photos)
+                .SingleOrDefaultAsync(AppUser => AppUser.Username == loginDto.Username.ToLower());
+
             //if null, return unauthorized
             if (user == null) return Unauthorized("Invalid username");
 
@@ -63,11 +66,18 @@ namespace API.Controllers
                 //if not equal, return unauthorized
                 if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid password");
             }
-
+            Console.WriteLine("AAAAAAAAAAAAAAAAAAAAA/nAAAAAAAAAAAAAAAAAAAAA/nAAAAAAAAAAAAAAAAAAAAA/nAAAAAAAAAAAAAAAAAAAAA/nAAAAAAAAAAAAAAAAAAAAA/nAAAAAAAAAAAAAAAAAAAAA/nAAAAAAAAAAAAAAAAAAAAA/nAAAAAAAAAAAAAAAAAAAAA/nAAAAAAAAAAAAAAAAAAAAA/nAAAAAAAAAAAAAAAAAAAAA/n");
+            Console.WriteLine(user.Photos);
+            foreach (var photo in user.Photos)
+            {
+                Console.WriteLine("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+                Console.WriteLine(photo);
+            }
             return new UserDto
             {
                 Username = user.Username,
-                Token = _tokenService.CreateToken(user)
+                Token = _tokenService.CreateToken(user),
+                PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain).Url
             };
         }
 
