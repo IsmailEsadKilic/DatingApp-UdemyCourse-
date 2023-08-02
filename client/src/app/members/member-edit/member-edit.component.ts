@@ -5,7 +5,7 @@ import { take } from 'rxjs';
 import { Member } from 'src/app/_models/member';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
-import { MembersService } from 'src/app/_services/members.service';
+import { MemberService } from 'src/app/_services/member.service';
 
 @Component({
   selector: 'app-member-edit',
@@ -24,7 +24,7 @@ export class MemberEditComponent implements OnInit {
   user: User | null = null;
   
 
-  constructor(private accountService: AccountService, private membersService: MembersService, private toastr: ToastrService) {
+  constructor(private accountService: AccountService, private memberService: MemberService, private toastr: ToastrService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe({
       next: user => this.user = user
     })
@@ -36,13 +36,13 @@ export class MemberEditComponent implements OnInit {
 
   loadMember() {
     if (!this.user) return;
-    this.membersService.getMember(this.user.username).subscribe({
+    this.memberService.getMember(this.user.username).subscribe({
       next: member => this.member = member
     })
   }
 
   updateMember() {
-    this.membersService.updateMember(this.editForm?.value).subscribe({
+    this.memberService.updateMember(this.editForm?.value).subscribe({
       next: _ =>{
         this.toastr.success('Profile updated successfully');
         this.editForm?.reset(this.member);
