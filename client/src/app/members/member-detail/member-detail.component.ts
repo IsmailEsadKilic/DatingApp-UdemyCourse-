@@ -71,7 +71,7 @@ export class MemberDetailComponent implements OnInit {
 
   loadMessages() {
     if (this.member) {
-      this.messageService.getMessageThread(this.member.username).subscribe({
+      this.messageService.getMessageThread(this.member.userName).subscribe({
         next: messages => {
           this.messages = messages;
         }

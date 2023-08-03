@@ -12,7 +12,7 @@ namespace API.Helpers
 
             if (!resultContext.HttpContext.User.Identity.IsAuthenticated) return; //if user is not authenticated, do nothing
 
-            var UserId = resultContext.HttpContext.User.GetUserId(); //get username from token
+            var UserId = resultContext.HttpContext.User.GetUserId(); //get userName from token
 
             var repo = resultContext.HttpContext.RequestServices.GetRequiredService<IUserRepository>(); //get user repo
 

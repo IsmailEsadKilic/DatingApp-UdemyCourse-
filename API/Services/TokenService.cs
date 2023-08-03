@@ -18,9 +18,9 @@ namespace API.Services
         {
             var claims = new List<Claim>
             {
-                //add username to token
+                //add userName to token
                 new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
-                new Claim(JwtRegisteredClaimNames.UniqueName, user.Username)
+                new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName)
 
             };
 

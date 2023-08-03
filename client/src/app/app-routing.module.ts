@@ -21,7 +21,7 @@ const routes: Routes = [
     children: [
       {path: 'member/edit', component: MemberEditComponent, canDeactivate: [PreventUnsavedChangesGuard]}, // localhost:4200/member/edit
       {path: 'members', component: MemberListComponent}, // localhost:4200/members
-      {path: 'members/:username', component: MemberDetailComponent, resolve: {member: MemberDetailedResolver} }, // localhost:4200/members/3
+      {path: 'members/:userName', component: MemberDetailComponent, resolve: {member: MemberDetailedResolver} }, // localhost:4200/members/3
       {path: 'lists', component: ListsComponent}, // localhost:4200/lists
       {path: 'messages', component: MessagesComponent}, // localhost:4200/messages
     ]

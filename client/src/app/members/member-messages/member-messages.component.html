@@ -8,7 +8,7 @@
             <li *ngFor="let message of messages">
                 <div>
                     <span class="chat-img float-end">
-                        <img src="{{message?.senderPhotoUrl || './assets/user.png'}}" alt="{{message?.senderUsername}}" class="rounded-circle">
+                        <img src="{{message?.senderPhotoUrl || './assets/user.png'}}" alt="{{message?.senderUserName}}" class="rounded-circle">
                     </span>
                     <div class="chat-body">
                         <div class="header">
@@ -16,8 +16,8 @@
                                 <span class="fa fa-clock-o text-info">
                                     {{message?.messageSent | timeago}}
                                 </span>
-                                <span class="text-danger" *ngIf="!message.dateRead && message.senderUsername !== username">(unread)</span>
-                                <span class="text-success" *ngIf="message.dateRead && message.senderUsername !== username"> (read {{message.dateRead | timeago}})</span>
+                                <span class="text-danger" *ngIf="!message.dateRead && message.senderUserName !== userName">(unread)</span>
+                                <span class="text-success" *ngIf="message.dateRead && message.senderUserName !== userName"> (read {{message.dateRead | timeago}})</span>
 
                             </small>
                         </div>

@@ -23,17 +23,17 @@ namespace API.Controllers
             _context = context;
         }
         
-        [HttpPost("register")] // POST: api/account/register?username=abc&password=123
+        [HttpPost("register")] // POST: api/account/register?userName=abc&password=123
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
-            //check if username already exists
-            if (await UserExists(registerDto.Username)) return BadRequest("Username is taken");
+            //check if userName already exists
+            if (await UserExists(registerDto.UserName)) return BadRequest("UserName is taken");
 
             var user = _mapper.Map<AppUser>(registerDto);
 
             using var hmac = new HMACSHA512();
 
-            user.Username = registerDto.Username.ToLower();
+            user.UserName = registerDto.UserName.ToLower();
             user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password));
             user.PasswordSalt = hmac.Key;
 
@@ -42,7 +42,7 @@ namespace API.Controllers
 
             return new UserDto
             {
-                Username = user.Username,
+                UserName = user.UserName,
                 Token = _tokenService.CreateToken(user),
                 KnownAs = user.KnownAs,
                 Gender = user.Gender
@@ -57,10 +57,10 @@ namespace API.Controllers
             //get user from db
             var user = await _context.Users
                 .Include(p => p.Photos)
-                .SingleOrDefaultAsync(AppUser => AppUser.Username == loginDto.Username.ToLower());
+                .SingleOrDefaultAsync(AppUser => AppUser.UserName == loginDto.UserName.ToLower());
 
             //if null, return unauthorized
-            if (user == null) return Unauthorized("Invalid username");
+            if (user == null) return Unauthorized("Invalid userName");
 
             using var hmac = new HMACSHA512(user.PasswordSalt);
 
@@ -75,7 +75,7 @@ namespace API.Controllers
 
             return new UserDto
             {
-                Username = user.Username,
+                UserName = user.UserName,
                 Token = _tokenService.CreateToken(user),
                 PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain).Url,
                 KnownAs = user.KnownAs,
@@ -83,9 +83,9 @@ namespace API.Controllers
             };
         }
 
-        private async Task<bool> UserExists(string username)
+        private async Task<bool> UserExists(string userName)
         {
-            return await _context.Users.AnyAsync(AppUser => AppUser.Username == username.ToLower());
+            return await _context.Users.AnyAsync(AppUser => AppUser.UserName == userName.ToLower());
         }
     }
 }

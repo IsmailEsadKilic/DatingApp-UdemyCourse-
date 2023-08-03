@@ -37,18 +37,18 @@
         </thead>
         <tbody class="align-middle">
             <tr [hidden]="this.loading" *ngFor="let message of messages"
-                routerLink="{{container === 'Outbox' ? '/members/' + message.recipientUsername : '/members/' + message.senderUsername}}"
+                routerLink="{{container === 'Outbox' ? '/members/' + message.recipientUserName : '/members/' + message.senderUserName}}"
                 [queryParams]="{tab: 'Messages'}"
             >
                 <td>{{message.content}}</td>
                 <td>
                     <div *ngIf="container === 'Outbox'">
                         <img class="img-circle rounded-circle me-2" src="{{message.recipientPhotoUrl || './assets/user.png'}}" alt="recipient photo">
-                        <strong>{{message.recipientUsername}}</strong>
+                        <strong>{{message.recipientUserName}}</strong>
                     </div>
                     <div *ngIf="container !== 'Outbox'">
                         <img class="img-circle rounded-circle me-2" src="{{message.senderPhotoUrl || './assets/user.png'}}" alt="sender photo">
-                        <strong>{{message.senderUsername}}</strong>
+                        <strong>{{message.senderUserName}}</strong>
                     </div>
                 </td>
                 <td>{{message.messageSent | timeago}}</td>

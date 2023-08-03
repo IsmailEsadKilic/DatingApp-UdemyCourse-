@@ -19,10 +19,10 @@ namespace API.Data
             
         }
 
-        public async Task<MemberDto> GetMemberAsync(string username)
+        public async Task<MemberDto> GetMemberAsync(string UserName)
         {
             return await _context.Users
-                .Where(x => x.Username == username)
+                .Where(x => x.UserName == UserName)
                 .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
                 .SingleOrDefaultAsync();
         }
@@ -30,7 +30,7 @@ namespace API.Data
         public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
         {
             var query = _context.Users.AsQueryable(); //queryable because we want to add where clauses to it
-            query = query.Where(u => u.Username != userParams.currentUsername); //filter out current user
+            query = query.Where(u => u.UserName != userParams.CurrentUserName); //filter out current user
             query = query.Where(u => u.Gender == userParams.Gender);
             var minDob = DateOnly.FromDateTime(DateTime.Today.AddYears(-userParams.MaxAge - 1));
             var maxDob = DateOnly.FromDateTime(DateTime.Today.AddYears(-userParams.MinAge));
@@ -60,11 +60,11 @@ namespace API.Data
             //     .SingleOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<AppUser> GetUserByUsernameAsync(string username)
+        public async Task<AppUser> GetUserByUserNameAsync(string UserName)
         {
             return await _context.Users
                 .Include(p => p.Photos)
-                .SingleOrDefaultAsync(x => x.Username == username);
+                .SingleOrDefaultAsync(x => x.UserName == UserName);
         }
 
         public async Task<IEnumerable<AppUser>> GetUsers()

@@ -2,7 +2,7 @@ namespace API.Helpers
 {
     public class UserParams : PaginationParams
     {
-        public string currentUsername { get; set; }
+        public string CurrentUserName { get; set; }
         public string Gender { get; set; }
         
         public int MinAge { get; set; } = 18;
