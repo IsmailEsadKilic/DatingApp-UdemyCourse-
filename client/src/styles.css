@@ -44,3 +44,6 @@
     padding: 15px 0;
   }
   
+  body, p, h1, h2, h3, h4, h5, h6, span, div, input, button {
+    font-family: 'Comic Sans MS', cursive;
+  }
