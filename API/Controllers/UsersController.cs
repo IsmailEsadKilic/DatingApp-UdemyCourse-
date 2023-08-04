@@ -26,7 +26,6 @@ namespace API.Controllers
             _mapper = mapper;
             _userRepository = userRepository;
         }
-
         [HttpGet]
         public async Task<ActionResult<PagedList<MemberDto>>> GetUsers([FromQuery]UserParams userParams)
         {
@@ -41,7 +40,6 @@ namespace API.Controllers
             Response.AddPaginationHeader(new PaginationHeader(userParams.PageNumber, userParams.PageSize, users.TotalCount, users.TotalPages));
             return Ok(users);
         }
-
         [HttpGet("{userName}")]
         public async Task<ActionResult<MemberDto>> GetUser(string userName)
         {
