@@ -17,6 +17,7 @@ export class AdminGuard implements CanActivate {
           return false;
         }
         if (user.roles.includes('Admin') || user.roles.includes('Moderator')) {
+          this.toastr.success('You shall pass!');
           return true;
         }
         else {
