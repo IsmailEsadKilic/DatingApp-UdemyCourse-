@@ -43,3 +43,17 @@
     display: inline-block;
     margin-bottom: 20px;
 }
+
+@keyframes fa-blink {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.4;
+    }
+}
+
+.is-online {
+    animation: fa-blink 1.5s alternate infinite;
+    color: rgb(1, 189, 43);
+}

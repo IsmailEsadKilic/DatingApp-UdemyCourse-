@@ -1,11 +1,11 @@
 <div class="card">
     <div class="card-body">
-        <div *ngIf="messages.length === 0">
+        <div *ngIf="(messageService.messageThread$ | async)?.length === 0" class="text-center">
             No Messages yet... Start by saying Kys! (it means keep yourself safe)
         </div>
 
-        <ul *ngIf="messages.length > 0" class="chat">
-            <li *ngFor="let message of messages">
+        <ul *ngIf="(messageService.messageThread$ | async)!.length > 0 " class="chat">
+            <li *ngFor="let message of (messageService.messageThread$ | async)">
                 <div>
                     <span class="chat-img float-end">
                         <img src="{{message?.senderPhotoUrl || './assets/user.png'}}" alt="{{message?.senderUserName}}" class="rounded-circle">
