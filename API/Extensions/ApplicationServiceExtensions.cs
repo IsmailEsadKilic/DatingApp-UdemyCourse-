@@ -17,15 +17,13 @@ namespace API.Extensions
             });
             services.AddCors();
             services.AddScoped<ITokenService, TokenService>();
-            services.AddScoped<IUserRepository, UserRepository>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
             services.AddScoped<IPhotoService, PhotoService>();
             services.AddScoped<LogUserActivity>(); //add log user activity as a service
-            services.AddScoped<ILikesRepository, LikesRepository>();
-            services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddSignalR(); //add signalR service
             services.AddSingleton<PresenceTracker>(); //add presence tracker as a singleton service
+            services.AddScoped<IUnitOfWork, UnitOfWork>(); //add unit of work as a scoped service
 
             return services;
         }

@@ -4,7 +4,10 @@
             No Messages yet... Start by saying Kys! (it means keep yourself safe)
         </div>
 
-        <ul *ngIf="(messageService.messageThread$ | async)!.length > 0 " class="chat">
+        <ul #ScrollMe
+        style="overflow: scroll; height: 500px;"
+        [scrollTop]="ScrollMe.scrollHeight"
+        *ngIf="(messageService.messageThread$ | async)!.length > 0 " class="chat">
             <li *ngFor="let message of (messageService.messageThread$ | async)">
                 <div>
                     <span class="chat-img float-end">
