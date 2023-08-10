@@ -1,1 +1,18 @@
-<p>photo-management works!</p>
+<div class="row">
+    <div class="col-2" *ngFor="let photo of this.photos">
+        <img [src]="photo.url" [alt]="'photo of {{photo.userName}}'" class="img-thumbnail mb-1"/>
+        <div class="text-center">
+            <button
+                class="btn btn-sm btn-secondary"
+                (click)="approvePhoto(photo.id)"
+                [ngClass]="photo.isMain ? 'btn-success' : 'btn-secondary'"
+            >Approve</button>
+            <button
+                class="btn btn-sm btn-danger"
+                [disabled]="photo.isMain"
+                (click)="rejectPhoto(photo.id)"
+            ><i class="fa fa-trash"></i></button>
+        </div>
+        <p>photo by: {{photo.userName}}</p>
+    </div>
+</div>  

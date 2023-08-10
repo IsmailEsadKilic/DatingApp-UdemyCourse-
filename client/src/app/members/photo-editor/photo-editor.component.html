@@ -1,6 +1,6 @@
 <div class="row mb-3" *ngIf="member">
     <div class="col-2 mb-1" *ngFor="let photo of member.photos">
-        <img src="{{photo.url}}" alt="photo of user" class="img-thumbnail" mb-1/>
+        <img [src]="photo.url" [alt]="'photo of user'" class="img-thumbnail mb-1" [style.opacity]="photo.isApproved ? 1 : 0.2" />
         <div class="text-center">
             <button
                 class="btn btn-sm btn-secondary"
@@ -14,8 +14,12 @@
                 (click)="deletePhoto(photo.id)"
             ><i class="fa fa-trash"></i></button>
         </div>
+        <div class="text-center mt-1" *ngIf="!photo.isApproved">
+            <span class="text-danger">Waiting for approval</span>
+        </div>
     </div>
 </div>
+
 
 <div class="row">
 

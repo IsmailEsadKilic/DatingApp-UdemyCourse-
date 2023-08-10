@@ -14,7 +14,8 @@
 	    "Photos": [
             {
                 "url": "https://randomuser.me/api/portraits/women/43.jpg",
-                        "isMain": true
+                "isApproved": true,
+                "isMain": true
             }
 	    ]
     },
@@ -33,7 +34,8 @@
 	    "Photos": [
             {
                 "url": "https://randomuser.me/api/portraits/women/31.jpg",
-                        "isMain": true
+                "isApproved": true,
+                "isMain": true
             }
 	    ]
     },
@@ -52,7 +54,8 @@
 	    "Photos": [
             {
                 "url": "https://randomuser.me/api/portraits/women/6.jpg",
-                        "isMain": true
+                "isApproved": true,
+                "isMain": true
             }
 	    ]
     },
@@ -71,7 +74,8 @@
 	    "Photos": [
             {
                 "url": "https://res.cloudinary.com/dwguxzlir/image/upload/v1691068972/da-net7/lgmeck04sm6wxim031ha.jpg",
-                        "isMain": true
+                "isApproved": true,
+                "isMain": true
             }
 	    ]
     },
@@ -90,7 +94,8 @@
 	    "Photos": [
             {
                 "url": "https://res.cloudinary.com/dwguxzlir/image/upload/v1691069115/da-net7/narrrycmrbydyenidfq3.jpg",
-                        "isMain": true
+                "isApproved": true,
+                "isMain": true
             }
 	    ]
     },
@@ -109,6 +114,7 @@
         "Photos": [
             {
                 "url": "https://res.cloudinary.com/dwguxzlir/image/upload/v1691069217/da-net7/b917r9km0yhnudfrllyc.png",
+                "isApproved": true,
                 "isMain": true
             }
         ]
@@ -128,6 +134,7 @@
         "Photos": [
             {
                 "url": "https://randomuser.me/api/portraits/men/50.jpg",
+                "isApproved": true,
                 "isMain": true
             }
         ]
@@ -147,6 +154,7 @@
         "Photos": [
             {
                 "url": "https://randomuser.me/api/portraits/men/49.jpg",
+                "isApproved": true,
                 "isMain": true
             }
         ]
@@ -166,6 +174,7 @@
         "Photos": [
           {
             "url": "https://res.cloudinary.com/dwguxzlir/image/upload/v1691068822/da-net7/rovmdc5emaflp23zvcly.jpg",
+            "isApproved": true,
             "isMain": true
           }
         ]
@@ -185,6 +194,7 @@
         "Photos": [
           {
             "url": "https://res.cloudinary.com/dwguxzlir/image/upload/v1690805756/da-net7/mmj7gnawh0gm779r9adx.jpg",
+            "isApproved": true,
             "isMain": true
           }
         ]
@@ -204,6 +214,7 @@
         "Photos": [
           {
             "url": "https://res.cloudinary.com/dwguxzlir/image/upload/v1691069821/da-net7/kwd0vw9quqlroxksfwxg.jpg",
+            "isApproved": true,
             "isMain": true
           }
         ]
@@ -223,6 +234,7 @@
         "Photos": [
             {
                 "url": "https://res.cloudinary.com/dwguxzlir/image/upload/v1691068208/da-net7/qbgucuzyezr1bijaq2tl.png",
+                "isApproved": true,
                 "isMain": true
             }
         ]
@@ -242,6 +254,7 @@
         "Photos": [
           {
             "url": "https://res.cloudinary.com/dwguxzlir/image/upload/v1691131198/da-net7/sav39yhlx5hbhtxfzpqo.png",
+            "isApproved": true,
             "isMain": true
           }
         ]
@@ -261,6 +274,7 @@
         "Photos": [
           {
             "url": "https://res.cloudinary.com/dwguxzlir/image/upload/v1691131350/da-net7/rbdge01q284t1hriq4jq.jpg",
+            "isApproved": true,
             "isMain": true
           }
         ]
@@ -280,6 +294,7 @@
         "Photos": [
           {
             "url": "https://res.cloudinary.com/dwguxzlir/image/upload/v1691132694/da-net7/mt0tleb3o42qbg4uopcm.webp",
+            "isApproved": true,
             "isMain": true
           }
         ]

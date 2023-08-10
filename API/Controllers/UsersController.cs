@@ -43,7 +43,7 @@ namespace API.Controllers
         [HttpGet("{userName}")]
         public async Task<ActionResult<MemberDto>> GetUser(string userName)
         {
-            return await _uow.UserRepository.GetMemberAsync(userName);
+            return await _uow.UserRepository.GetMemberAsync(userName, User.GetUserName());
         }
 
         [HttpPut]
@@ -74,14 +74,9 @@ namespace API.Controllers
             var photo = new Photo //create new photo object
             {
                 Url = result.SecureUrl.AbsoluteUri, //set url to the secure url
-                PublicId = result.PublicId //set public id to the public id
+                PublicId = result.PublicId, //set public id to the public id
+                IsApproved = false //set is approved to false
             };
-
-            if (user.Photos.Count == 0) //if user has no photos
-            {
-                photo.IsMain = true; //set photo to main
-            }
-
 
             user.Photos.Add(photo); //add photo to user
 
@@ -125,7 +120,7 @@ namespace API.Controllers
 
             if (user == null) return NotFound(); //if user is null, return not found
 
-            var photo = user.Photos.FirstOrDefault(x => x.Id == photoId); //get photo from user
+            var photo = await _uow.PhotoRepository.GetPhotoByIdAsync(photoId); //get photo from repo
 
             if (photo == null) return NotFound(); //if photo is null, return not found
 

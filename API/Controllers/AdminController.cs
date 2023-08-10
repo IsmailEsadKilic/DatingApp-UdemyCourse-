@@ -1,3 +1,4 @@
+using API.DTOs;
 using API.Entities;
 using API.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -11,10 +12,12 @@ namespace API.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly IPhotoService _photoService;
-        public AdminController(UserManager<AppUser> userManager, IPhotoService photoService)
+        private readonly IUnitOfWork _uow;
+        public AdminController(UserManager<AppUser> userManager, IPhotoService photoService, IUnitOfWork uow)
         {
             _photoService = photoService;
             _userManager = userManager;
+            _uow = uow;
         }
         
         [Authorize(Policy = "RequireAdminRole")]
@@ -57,13 +60,6 @@ namespace API.Controllers
             if (!result.Succeeded) return BadRequest("Failed to remove the roles"); //if the result is not successful, return bad request
 
             return Ok(await _userManager.GetRolesAsync(user)); //return the roles for the user
-        }
-
-        [Authorize(Policy = "ModeratePhotoRole")]
-        [HttpGet("photos-to-moderate")]
-        public ActionResult GetPhotosForModeration()
-        {
-            return Ok("Admins or moderators can see this");
         }
     }
 }
