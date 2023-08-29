@@ -2,11 +2,13 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
 import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
+import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
 import { Member } from 'src/app/_models/member';
 import { Message } from 'src/app/_models/message';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
+import { MemberService } from 'src/app/_services/member.service';
 import { MessageService } from 'src/app/_services/message.service';
 import { PresenceService } from 'src/app/_services/presence.service';
 
@@ -25,7 +27,8 @@ export class MemberDetailComponent implements OnInit, OnDestroy {
   user?: User;
 
   constructor(private accountService: AccountService, private route: ActivatedRoute,
-    private messageService: MessageService, public presenceService: PresenceService) {
+    private messageService: MessageService, public presenceService: PresenceService,
+    private memberService: MemberService, private toastr: ToastrService) {
       this.accountService.currentUser$.pipe(take(1)).subscribe({
         next: user => {
           if (user) {
@@ -105,4 +108,12 @@ export class MemberDetailComponent implements OnInit, OnDestroy {
       this.messageService.stopHubConnection();
     }
   } 
+
+  addLike(member: Member) {
+    this.memberService.addLike(member.userName).subscribe({
+      next: () => {
+        this.toastr.success('You have liked ' + member.knownAs);
+      }
+    })
+  }
 }
