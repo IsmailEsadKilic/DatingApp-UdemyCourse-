@@ -55,8 +55,8 @@ export class MemberService {
 
     let params = getPaginationHeaders(userParams.pageNumber, userParams.pageSize);
     if (userParams.gender == undefined) {
-      for (let i = 0; i < 10000; i++) {
-        console.log("you done goofed!")
+      for (let i = 0; i < 100; i++) {
+        console.log("you done goofed!(member.service.ts) gender is undefined!");
       }
     }
     params = params.append('minAge', userParams.minAge);

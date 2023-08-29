@@ -30,7 +30,7 @@ namespace API.Controllers
         public async Task<ActionResult<PagedList<MemberDto>>> GetUsers([FromQuery]UserParams userParams)
         {
             var gender = await _uow.UserRepository.GetUserGender(User.GetUserName());
-            userParams.CurrentUserName = User.GetUserName(); 
+            userParams.CurrentUserName = User.GetUserName();    
             if (string.IsNullOrEmpty(userParams.Gender))
                 {
                     userParams.Gender = gender == "male" ? "female" : "male";
