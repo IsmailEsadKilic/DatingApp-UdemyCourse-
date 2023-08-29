@@ -10,7 +10,7 @@ primary_region = "otp"
   image = "ismailkilic/datingapp:latest"
 
 [env]
-  ASPNET_URLS = "http://+:8080"
+  ASPNETCORE_URLS = "http://+:8080"
   CloudinarySettings__CloudName = "dwguxzlir"
   CloudinarySettings__ApiKey = "125594822125742"
 
